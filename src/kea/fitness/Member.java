@@ -1,13 +1,26 @@
 package kea.fitness;
 
-public class Members extends Employees{
+public class Member extends Person {
 
-    private String memberType;
-    private int fee;
+    private MemberType memberType;
+    enum MemberType {
+        FULL, BASIC
+    }
 
-    public void createMember(String memberType, int fee) {
+    public Member(String name, String cpr, MemberType memberType) {
+        super(name, cpr);
         this.memberType = memberType;
-        this.fee = fee;
 
     }
+
+    public void printMemberformation() {
+        if (this.memberType == MemberType.BASIC) {
+            System.out.println(name + "\t" + cpr + "\t" + "Basic" + "\t\t" + 199);
+        } else if (this.memberType == MemberType.FULL) {
+            System.out.println(name + "\t" + cpr + "\t" + "Full" + "\t\t" + 299);
+        } else {
+            System.out.println("Unknown");
+        }
+    }
+
 }

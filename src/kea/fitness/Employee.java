@@ -1,23 +1,39 @@
 package kea.fitness;
 
-public class Employees {
+public class Employee extends Person {
 
-    private String name;
-    private String cpr;
     private int hours;
     private int salary;
     private int vacation;
-
-    Employees(String name, String cpr, int hours, int salary, int vacation) {
-        this.name = name;
-        this.cpr = cpr;
-        this.hours = hours;
-        this.salary = salary;
-        this.vacation = vacation;
+    private EmployeeType employeeType;
+    enum EmployeeType {
+        ADMIN, INSTRUCTOR
     }
 
-    @Override
-    public String toString() {
-        return name + cpr + hours + salary + vacation;
+    Employee(String name, String cpr, EmployeeType employeeType) {
+        super(name, cpr);
+        if (employeeType == EmployeeType.ADMIN) {
+            this.hours = 37;
+            this.salary = 33000;
+            this.vacation = 5;
+        } else if (employeeType == EmployeeType.INSTRUCTOR) {
+            throw new Error("Wah");
+        }
     }
+
+    Employee(String name, String cpr, EmployeeType employeeType, int hours) {
+        super(name, cpr);
+        if (employeeType == EmployeeType.ADMIN) {
+            throw new Error("Wah");
+        } else if (employeeType == EmployeeType.INSTRUCTOR) {
+            this.hours = hours;
+            this.salary = hours * 199;
+            this.vacation = 0;
+        }
+    }
+
+    public void printEmployeeInformation() {
+        System.out.println(name + "\t" + cpr + "\t" + hours + "\t\t" + salary + "\t" + (vacation > 0 ? vacation : ""));
+    }
+
 }
