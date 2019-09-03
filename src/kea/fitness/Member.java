@@ -13,7 +13,7 @@ public class Member extends Person {
 
     }
 
-    public void printMemberformation() {
+    public void printMemberInformation() {
         if (this.memberType == MemberType.BASIC) {
             System.out.println(name + "\t" + cpr + "\t" + "Basic" + "\t\t" + 199);
         } else if (this.memberType == MemberType.FULL) {
